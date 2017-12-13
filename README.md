@@ -37,3 +37,25 @@ node app
 
 // The terminal can see the console
 ```
+
+## Connect Monogdb
+
+> import mongoose and use mongoose
+
+[Mongodb config](https://docs.mongodb.com/v3.4/installation/) <br>
+[Operate the database](https://docs.mongodb.com/v3.4/reference/configuration-options/)
+
+```shell
+npm i mongoose --save
+
+cd node-express
+touch db.js
+```
+
+```js
+const express = require('express')
+const db = require('mongoose')
+
+db.connect('mongodb://localhost/books_db', {useMongoClient: true})
+db.Promise = promise
+```
