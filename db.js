@@ -13,3 +13,9 @@ const bookSchema = new Schema({
   author: String,
   publicsher: String
 })
+
+const Book = db.model('books', bookSchema)
+
+module.exports = {
+  Book: Book
+}
