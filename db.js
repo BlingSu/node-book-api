@@ -2,7 +2,7 @@ const express = require('express')
 const db = require('mongoose')
 
 db.connect('mongodb://localhost/books_db', {useMongoClient: true})
-db.Promise = promise
+db.Promise = Promise
 
 const Schema = db.Schema
 const bookSchema = new Schema({
