@@ -79,3 +79,18 @@ module.exports = {
   Book: Book
 }
 ```
+
+### Setting Routes
+
+```shell
+cd node-express
+mkdir routes
+cd routes && touch books.js
+```
+
+app.js
+> The routes direction correspond file
+
+```js
+app.get('/books/', require('./routes/books'))
+```
