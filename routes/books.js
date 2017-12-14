@@ -26,11 +26,11 @@ router.get('/get_data/:page?', (req, res) => {
   }
 
   Book.find(filter).limit(pageSize).skip((currentPage - 1) * pageSize).sort({id: -1})
-  .then(resp => {
-    if (resp.length > 0) {
+  .then(data => {
+    if (data.length > 0) {
       res.json({
         status: 'y',
-        data: resp,
+        data: data,
         current_page: currentPage
       })
     } else {
