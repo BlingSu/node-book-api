@@ -1,6 +1,6 @@
 /**
  * router interface
- * @author angelasu 
+ * @author angelasu
  * @date 2017/12/14
  */
 
@@ -34,18 +34,11 @@ router.get('/get_data/:page?', (req, res) => {
         current_page: currentPage
       })
     } else {
-      res.json({
-        status: 'n',
-        msg: 'No more data'
-      })
+      res.json({ status: 'n', msg: 'No more data' })
     }
   })
   .catch(err => {
-    res.json({
-      status: 'n',
-      data: [],
-      msg: 'get data faile'
-    })
+    res.json({ status: 'n', data: [], msg: 'get data fail' })
   })
 })
 
