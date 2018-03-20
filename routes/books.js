@@ -1,7 +1,8 @@
 /**
- * router interface
- * @author angelasu
- * @date 2017/12/14
+ * router: interface
+ * @author: angelasu
+ * @date: 2017/12/14
+ * @description: booklist
  */
 
 const express = require('express')

@@ -14,8 +14,32 @@ const bookSchema = new Schema({
   publicsher: String
 })
 
+const studentSchema = new Schema({
+  name: String,
+  gender: String,
+  birthday: {
+    type: Date,
+    default: Date.now()
+  },
+  user_name: String,
+  pwd: String,
+  mobile: String,
+  email: String,
+  address: String,
+  created_at: {
+    type: Date,
+    default: Date.now()
+  },
+  updated_at: {
+    type: Date,
+    default: Date.now()
+  }
+})
+
 const Book = db.model('books', bookSchema)
+const Student = db.model('student', studentSchema)
 
 module.exports = {
-  Book: Book
+  Book: Book,
+  Student: Student
 }
