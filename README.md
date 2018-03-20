@@ -1,142 +1,37 @@
-# Nodejs
+##  图书借阅系统api
 
-## Init Project
+> 说明: 项目为图书借阅系统的api  
 
-```bash
-mkdir node-express
-npm init
-```
+> 主要使用expres构建，crawler爬取数据
 
-## Install Dependencies
-```
-npm i express body-parser --save
-```
+### 使用说明
 
+``` bash
+# 克隆项目
+git clone git@github.com:angelasubi/node-express.git
 
-## Start File
+# 安装依赖
+npm install
 
-```bash
-cd node-express
-touch app.js
-cd app.js
-```
+# 启动mogodb
+sudo mongod
 
-## Basic Server
-```js
-const express = require('express')
-const app = express()
-
-app.listen(3333, () => {
-  console.log(`the server is running port: 3333.....`)
-})
-```
-
-> excuting shell
-```shell
-node app
-
-// The terminal can see the console
-```
-
-### Connect Monogdb
-
-> import mongoose and use mongoose
-
-[Mongodb config](https://docs.mongodb.com/v3.4/installation/) <br>
-[Operate the database](https://docs.mongodb.com/v3.4/reference/configuration-options/)
-
-```shell
-npm i mongoose --save
-
-cd node-express
-touch db.js
-```
-
-```js
-const express = require('express')
-const db = require('mongoose')
-
-db.connect('mongodb://localhost/books_db', {useMongoClient: true})
-db.Promise = Promise
-```
-
-### Design Schema
-
-```js
-const Schema = db.Schema
-const bookSchema = new Schema({
-  title: String,
-  img: String,
-  link: String,
-  price:String,
-  author: String,
-  publicsher: String
-})
-
-const Book = db.model('books', bookSchema)
-
-module.exports = {
-  Book: Book
-}
-```
-
-### Setting Routes
-
-```shell
-cd node-express
-mkdir routes
-cd routes && touch books.js
-```
-
-app.js
-> The routes direction correspond file
-
-```js
-app.get('/books/', require('./routes/books'))
-```
-
-### Router
-
-```js
-/**
- * import express db
- * get_data interface
- */
-const express = require('express')
-const router = express.Router()
-const db = require('../db')
-const Book = db.Book
-
-// This interface should have page and keyword
-router.get('/get_data/:page?', (res, req) => {
-  let currentPage = 1
-  let page = 10
-  let keyWord = req.query.keyWord
-  let filter = {}
-
-  // Read if there are any keywords
-  if (keyWord) {
-    filter = { title: new RegExp(keyWord, 'i') }
-  }
-
-  // get urlparams page
-  if (req.params.page) {
-    currentPage = Number(req.params.page)
-  }
-
-  // currentpage min = 1
-  if (currentPage <= 0) {
-    currentPage = 1
-  }
-
-  // according to the conditions search the database
-  Book.find(filter).limit(pageSize).skip((currentPage - 1) * pageSize).sort({id: -1})
-  .then(data => {
-    // whether the search is successful
-    if (data.length > 0) { res.json({ status: 'y', data: data, current_page: currentPage }) } 
-    else { res.json({ status: 'n', msg: 'No more data' }) }
-  })
-  .catch(err => { res.json({ status: 'n', data: [], msg: 'get data faile' }) })
-})
+# 运行
+node app.js
 
 ```
+
+### 接口说明
+
+#### 书籍详情
+说明: 返回书籍对应的信息  
+
+可选参数:  
+
+page: 页数  
+
+接口地址: /booklist/get_data/:page?  
+
+案例(第三页): /booklist/get_data/3  
+
+
