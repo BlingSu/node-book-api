@@ -10,7 +10,7 @@ const router = express.Router()
 const db = require('../db')
 const Book = db.Book
 
-router.get('/get_data/:page?', (req, res) => {
+router.get('/get_data', (req, res) => {
   let currentPage = 1
   let pageSize = 10
   let keyWord = req.query.keyWord
@@ -19,8 +19,8 @@ router.get('/get_data/:page?', (req, res) => {
   if (keyWord) {
     filter = { title: new RegExp(keyWord, 'i') }
   }
-  if (req.params.page) {
-    currentPage = Number(req.params.page)
+  if (req.query.page) {
+    currentPage = Number(req.query.page)
   }
   if (currentPage <= 0) {
     currentPage = 1
