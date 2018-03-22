@@ -35,11 +35,11 @@ router.get('/get_data', (req, res) => {
         current_page: currentPage
       })
     } else {
-      res.json({ status: 'n', msg: 'No more data' })
+      res.json({ status: 'n', message: 'No more data' })
     }
   })
   .catch(err => {
-    res.json({ status: 'n', data: [], msg: 'get data fail' })
+    res.json({ status: 'n', data: [], message: 'get data fail' })
   })
 })
 
