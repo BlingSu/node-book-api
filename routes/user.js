@@ -28,11 +28,11 @@ router.post('/login', (req, res) => {
   })
 })
 
-router.post('/reg/:id', (req, res) => {
+router.post('/reg', (req, res) => {
   Student.findOne({ user_name: req.body.user_name })
   .then(r => {
     if (r) r.json({ status: 'n', message: '用户已存在～' })
-      Student.findByIdAndUpdate(req.params.id, req.body, { upsert: true })
+      Student.findByIdAndUpdate(new require('mongodb').ObjectID(), req.body, { upsert: true })
       .then(data => {
         if (data) res.json({ status: 'n', message: '注册失败' })
           let time = new Date(Date.now() + 24 * 60 * 60 * 1000 * 10)

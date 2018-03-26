@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser')
 
 app.all('*',function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
@@ -13,6 +14,8 @@ app.all('*',function (req, res, next) {
     next()
   }
 })
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.use('/books/', require('./routes/books'))
 app.use('/user/',require('./routes/user'))
