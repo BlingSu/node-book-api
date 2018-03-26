@@ -16,8 +16,6 @@ router.post('/login', (req, res) => {
   .then(data => {
     if (data) {
       if (data.pwd == req.body.userPWD) {
-        let timeSpan = new Date(Date.now() + 24 * 60 * 60 * 1000 * 10)
-        res.cookie('user_id', data.id, { path: '/', expires: timeSpan })
         res.json({ status: 'y', message: '登录成功'})
       } else {
         res.json({ status: 'n', message: '密码错误' })
@@ -35,8 +33,6 @@ router.post('/reg', (req, res) => {
       Student.findByIdAndUpdate(new require('mongodb').ObjectID(), req.body, { upsert: true })
       .then(data => {
         if (data) res.json({ status: 'n', message: '注册失败' })
-          let time = new Date(Date.now() + 24 * 60 * 60 * 1000 * 10)
-          res.cookie('user_id', req.params.id, { path: '/', expires: time })
           res.json({ status: 'y', message: '注册成功' })
       })
   })
