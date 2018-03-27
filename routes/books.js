@@ -12,7 +12,7 @@ const Book = db.Book
 
 router.get('/get_data', (req, res) => {
   let currentPage = 1
-  let pageSize = 10
+  let pageSize = 20
   let keyWord = req.query.keyWord
   let filter = {}
 
