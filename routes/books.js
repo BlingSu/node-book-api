@@ -48,7 +48,6 @@ router.post('/pick', (req, res) => {
   if (req.body.user_id) {
     StudentBook.count({ user_id: req.body.user_id, book_id: req.body.id })
     .then(count => {
-      console.log(count)
       if (count > 0) {
         res.json({ status: 'n', message: '您已经借阅过了这本书' })
       } else {
