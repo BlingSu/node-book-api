@@ -16,7 +16,7 @@ router.post('/login', (req, res) => {
   .then(data => {
     if (data) {
       if (data.pwd == req.body.userPWD) {
-        res.json({ status: 'y', message: '登录成功'})
+        res.json({ status: 'y', message: '登录成功', data: { 'user_id': data._id }})
       } else {
         res.json({ status: 'n', message: '密码错误' })
       }
