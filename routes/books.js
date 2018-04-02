@@ -9,6 +9,7 @@ const express = require('express')
 const router = express.Router()
 const db = require('../db')
 const Book = db.Book
+const StudentBook = db.StudentBook
 
 router.get('/get_data', (req, res) => {
   let currentPage = 1
@@ -41,6 +42,15 @@ router.get('/get_data', (req, res) => {
   .catch(err => {
     res.json({ status: 'n', data: [], message: 'get data fail' })
   })
+})
+
+router.post('/pick', (req, res) => {
+  if (req.body.user_id) {
+    StudentBook.count({ book_id: req.body.id })
+    .then(count => {
+      console.log(count)
+    })
+  }
 })
 
 module.exports = router

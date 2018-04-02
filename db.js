@@ -36,10 +36,31 @@ const studentSchema = new Schema({
   }
 })
 
+const studentBookSchema = new Schema({
+  booked_date: {
+    type: Date,
+    default: Date.now
+  },
+  user_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'student'
+  },
+  book_id: {
+    type: Schema.Types.ObjectId,
+    ref: 'books'
+  }
+})
+
+studentBookSchema.methods.getBookedDate = function() {
+  return (`${this.booked_date.getFullYear()}-${this.booked_date.getMonth() + 1}-${this.booked_date.getDate()}  ${this.booked_date.getHours()}:${this.booked_date.getMinutes()}`)
+}
+
 const Book = db.model('books', bookSchema)
 const Student = db.model('student', studentSchema)
+const StudentBook = db.model('student_book', studentBookSchema)
 
 module.exports = {
   Book: Book,
-  Student: Student
+  Student: Student,
+  StudentBook: StudentBook
 }
