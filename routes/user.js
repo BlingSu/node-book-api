@@ -38,4 +38,21 @@ router.post('/reg', (req, res) => {
   })
 })
 
+router.get('/user_info', (req, res) => {
+  Student.findById(req.query.user_id)
+  .then(data => {
+    if (data) {
+      StudentBook.find({ user_id: req.query.user_id }).populate('book_id')
+      .then(resp => {
+        res.json({ status: 'y', user: data, books: resp })
+      })
+    } else {
+      res.json({ status: 'n', message: '用户信息不存在，请先登录' })
+    }
+  })
+  .catch(err => {
+    throw new Error(err)
+  })
+})
+
 module.exports = router
