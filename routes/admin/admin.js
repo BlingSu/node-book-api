@@ -5,7 +5,6 @@ const db = require('../../db')
 let admin = [{ adminName: 'admin', adminPassWord: '123456' }]
 
 router.post('/admin_login', (req, res) => {
-  console.log(Math.random())
   let admin_name = req.body.adminName
   let admin_pwd = req.body.adminPassWord
 
