@@ -81,4 +81,15 @@ router.post('/delete', (req, res) => {
     }
   })
 })
+
+router.get('/books', (req, res) => {
+  User.findById(req.query.id)
+  .then(data => {
+    UserBook.find({user_id: req.query.id}).populate('book_id')
+    .then(books => {
+      res.json({status: 'y', data: books, user: data})
+    })
+  })
+})
+
 module.exports = router
