@@ -23,123 +23,171 @@ nodemon app.js
 
 ### 接口说明
 
-> 用户
+<font color="#409EFF">用户</font>
 
-#### 书籍详情
-说明: 返回书籍对应的信息(GET)  
+#### 1. 书籍列表
+##### 接口功能
 
-接口: /booklist/get_data  
+> 返回书籍对应的信息(GET)  
 
-可选参数:  
+##### URL
 
-page: 页数  
-keyWord: 关键字  
+> booklist/get_data  
 
-#### 注册
-说明: 注册用户信息(POST)  
+##### 参数:  
 
-接口: /booklist/reg
+|参数|必选|说明|
+|:----- |:-------|----- |
+|page |false |页数 |
+|keyWord |false |关键字|
 
-参数:  
 
-user_name: 用户名  
-pwd: 密码  
-rePWD: 二次输入密码  
-name: 姓名  
-gender: 性别  
-birthday: 出生日期  
-mobile: 手机号码  
-email: 邮箱  
-address: 地址  
+#### 2. 注册
+##### 接口功能
 
-#### 登录
-说明: 用户登录(POST)  
+> 注册用户信息(POST)  
 
-接口: /booklist/login  
+##### URL
 
-参数:  
+> booklist/reg
+
+|参数|必选|说明|
+|:----- |:-------|----- |
+|user_name |true |用户名 |
+|pwd |true |密码|
+|rePWD |true |二次输入密码|
+|name |true |姓名|
+|gender |true |性别|
+|birthday |true |出生日期|
+|mobile |true |手机号码|
+|email |true |邮箱|
+|address |true |地址|
+
+
+#### 3. 登录
+##### 接口功能
+
+> 用户登录(POST)  
+
+##### URL
+
+> booklist/login  
+
+|参数|必选|说明|
+|:----- |:-------|----- |
+|userName |true |用户名 |
+|userPWD |true |密码|
 
 userName: 用户名  
 userPWD: 密码  
 
-#### 借阅
-说明: 用户借阅书籍(POST)  
+#### 4. 借阅
+##### 接口功能
 
-接口: /booklist/pick
+> 用户借阅书籍(POST)  
 
-参数:  
+##### URL
 
-id: 书籍id  
-user_id: 用户id  
+> booklist/pick
 
-
-#### 用户个人中心
-说明: 用户借阅书籍列表(GET)  
-
-接口: /booklist/user_info  
-
-参数:  
-
-user_id: 用户id  
-
-> 管理员
-
-#### 登录
-说明: 管理员登录(POST)
-
-接口: /admin/admin_login  
-
-参数:  
-
-adminName: 管理员用户名  
-adminPassWord: 密码
+|参数|必选|说明|
+|:----- |:-------|----- |
+|id |true |书籍id |
+|user_id |true |用户id|
 
 
-#### 列表
-说明: 用户信息列表(GET)  
 
-接口:
+#### 5. 用户个人中心
+##### 接口功能
 
-参数:  /admin/list  
+> 用户借阅书籍列表(GET)  
 
-page: 第几页  
-per_page: 一页几条  
-name: 姓名  
-mobile: 手机号码  
+##### URL
+
+> booklist/user_info  
+
+|参数|必选|说明|
+|:----- |:-------|----- |
+|user_id |true |用户id |
+
+<font color="#409EFF">管理员</font>
+
+#### 1. 登录
+##### 接口功能
+
+> 管理员登录(POST)
+
+##### URL
+
+> admin/admin_login  
+
+|参数|必选|说明|
+|:----- |:-------|----- |
+|adminName |true |管理员用户名 |
+|adminPassWord |true |密码|
 
 
-#### 新增 || 编辑
-说明: 新增用户或编辑用户(POST)  
+#### 2. 列表
+##### 接口功能
 
-接口: /admin/add  
+> 用户信息列表(GET)  
 
-参数:  
+##### URL
 
-user_name: 用户名  
-pwd: 密码  
-rePWD: 二次输入密码  
-name: 姓名  
-gender: 性别  
-birthday: 出生日期  
-mobile: 手机号码  
-email: 邮箱  
-address: 地址  
+> admin/list
 
 
-#### 删除
-说明: 删除用户(POST)  
+|参数|必选|说明|
+|:----- |:-------|----- |
+|page |true |第几页 |
+|per_page |true |一页几条|  
+|name |false |姓名|  
+|mobile |false |手机号码|   
 
-接口: /admin/delete  
 
-参数:  
+#### 3. 新增 || 编辑
+##### 接口功能
 
-_id: 用户id
+> 新增用户或编辑用户(POST)  
 
-#### 借阅信息
-说明: 用户借阅的书籍列表(GET)  
+##### URL
+> admin/add  
 
-接口: /admin/books  
+|参数|必选|说明|
+|:----- |:-------|----- |
+|user_name |true |用户名 |
+|pwd |true |密码|
+|rePWD |true |二次输入密码|
+|name |true |姓名|
+|gender |true |性别|
+|birthday |true |出生日期|
+|mobile |true |手机号码|
+|email |true |邮箱|
+|address |true |地址|
 
-参数:  
 
-id: 用户id
+#### 4. 删除
+##### 接口功能
+
+> 删除用户(POST)  
+
+##### URL
+
+> admin/delete  
+
+|参数|必选|说明|
+|:----- |:-------|----- |
+|_id |true |用户ID |
+
+#### 5. 借阅信息
+##### 接口功能
+
+> 用户借阅的书籍列表(GET)  
+
+##### URL
+
+> admin/books  
+
+|参数|必选|说明|
+|:----- |:-------|----- |
+|id |true |用户ID |
