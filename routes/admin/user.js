@@ -71,4 +71,14 @@ router.post('/add', (req, res) => {
     }
   })
 })
+
+router.post('/delete', (req, res) => {
+  User.findByIdAndRemove(req.body._id, (err, data) => {
+    if (err) {
+      res.json({ status: 'n', message: '未知错误～'})
+    } else {
+      res.json({ status: 'y', message: '删除成功' })
+    }
+  })
+})
 module.exports = router
