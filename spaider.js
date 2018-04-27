@@ -47,5 +47,6 @@ spaider.queue(arr);
 
 
 /**
- * "crawler": "^0.4.3",
+ * 爬虫模块
+ * "crawler": "^0.4.3"
  */
