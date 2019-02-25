@@ -44,7 +44,7 @@ const spaider = new Crawler({
 
 const i = 0
 const arr = []
-for (i i < 25; i++) {
+for (i; i < 25; i++) {
   arr[i]= 'http://bang.dangdang.com/books/newhotsales/1-'+(i+1)
 }
 spaider.queue(arr)
